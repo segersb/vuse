@@ -1,7 +1,10 @@
 import { ref, computed } from 'vue'
+import { vuseOption} from '@/entry'
 
-export default function vuseButton(options = {}) {
-  const text = ref(options.text || '')
+export default function vuseButton(options) {
+  const { getOptionValueRef, runOption } = vuseOption(options)
+
+  const text = ref(getOptionValueRef('text'))
 
   const clickRunning = ref(false)
   const click = async () => {
@@ -10,7 +13,7 @@ export default function vuseButton(options = {}) {
     }
 
     clickRunning.value = true
-    options.clickHandler && await options.clickHandler()
+    await runOption('clickHandler')
     clickRunning.value = false
   }
 
