@@ -1,30 +1,28 @@
-import { ref, computed } from 'vue'
-import { vuseOption} from '@/entry'
+import {reactive, watchEffect} from 'vue'
 
-export default function vuseButton(options) {
-  const { getOptionValueRef, runOption } = vuseOption(options)
+export default function vuseButton (init = {}) {
+  const button = reactive({
+    text: null,
+    clickRunning: false
+  })
 
-  const text = ref(getOptionValueRef('text'))
+  watchEffect(() => {
+    button.text = init.text || ''
+  })
 
-  const clickRunning = ref(false)
-  const click = async () => {
-    if (clickRunning.value) {
+  watchEffect(() => {
+    button.disabled = !!init.disabled || button.clickRunning
+  })
+
+  button.click = async () => {
+    if (button.clickRunning) {
       return
     }
 
-    clickRunning.value = true
-    await runOption('clickHandler')
-    clickRunning.value = false
+    button.clickRunning = true
+    init.clickHandler && await init.clickHandler()
+    button.clickRunning = false
   }
 
-  const disabled = computed(() => {
-    return !!options.disabled || clickRunning.value
-  })
-
-  return {
-    text,
-    click,
-    clickRunning,
-    disabled
-  }
+  return button
 }
