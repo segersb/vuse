@@ -6,14 +6,6 @@ export default function vuseButton (init = {}) {
     clickRunning: false
   })
 
-  watchEffect(() => {
-    button.text = init.text || ''
-  })
-
-  watchEffect(() => {
-    button.disabled = !!init.disabled || button.clickRunning
-  })
-
   button.click = async () => {
     if (button.clickRunning) {
       return
@@ -23,6 +15,12 @@ export default function vuseButton (init = {}) {
     init.clickHandler && await init.clickHandler()
     button.clickRunning = false
   }
+
+  watchEffect(() => {
+    button.text = init.text || ''
+    button.disabled = !!init.disabled || button.clickRunning
+    console.debug('initialized button', button)
+  })
 
   return button
 }

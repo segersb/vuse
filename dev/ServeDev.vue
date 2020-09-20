@@ -52,6 +52,6 @@ export default {
 <template>
   <div id="app">
     <dev-button text="Click Me!" :click-handler="asyncTimout"/>
-    <dev-list :items="planets" item-key="id" item-text="name"/>
+    <dev-list :values="planets" item-key="id" item-text="name" sort-property="name"/>
   </div>
 </template>

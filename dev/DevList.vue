@@ -10,21 +10,30 @@
 </template>
 
 <script>
+import {reactive, watchEffect} from 'vue'
 import vuseItemList from "@/lib-components/vuseItemList";
+import vuseItem from "@/lib-components/vuseItem";
 
 export default {
-  props: ['items', 'itemKey', 'itemText'],
+  props: ['values', 'itemKey', 'itemText', 'sortProperty'],
 
   setup (props) {
-    const list = vuseItemList({
-      items: props.items,
-      itemKey: props.itemKey,
-      itemText: props.itemText
+    const devList = reactive({
+      list: null
     })
 
-    return {
-      list
-    }
+    watchEffect(() => {
+      devList.list = vuseItemList({
+        items: props.values.map(value => vuseItem({
+          value,
+          key: props.itemKey,
+          text: props.itemText
+        })),
+        sortProperty: props.sortProperty,
+      })
+    })
+
+    return devList
   }
 }
 </script>
