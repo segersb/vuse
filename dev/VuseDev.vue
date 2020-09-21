@@ -1,12 +1,12 @@
 <script>
-import VuseClick from './VuseClick'
+import VuseAction from './VuseAction'
 import VuseDebounce from './VuseDebounce'
 import VuseDragAndDrop from './VuseDragAndDrop'
 import VuseList from './VuseList'
 import VuseSelect from './VuseSelect'
 
 const components = {
-  VuseClick,
+  VuseAction,
   VuseDebounce,
   VuseDragAndDrop,
   VuseList,

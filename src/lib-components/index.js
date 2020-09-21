@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-export { default as vuseClick } from './vuseClick';
+export { default as vuseAction } from './vuseAction';
 export { default as vuseDebounce } from './vuseDebounce';
 export { default as vuseDragAndDrop } from './vuseDragAndDrop';
 export { default as vuseItem } from './vuseItem';
