@@ -1,7 +1,22 @@
 <template>
+  <h2>Simple list</h2>
+  <ul>
+    <li v-for="item in items" :key="item.key">
+      {{ item.text }}
+    </li>
+  </ul>
+
+  <h2>Sorted list</h2>
+  <ul>
+    <li v-for="item in sortedItems" :key="item.key">
+      {{ item.text }}
+    </li>
+  </ul>
+
+  <h2>Selection list</h2>
   <ul>
     <li
-        v-for="item in list.items"
+        v-for="item in selectionItems"
         :key="item.key"
         :class="{
           selected: item.selected
@@ -13,23 +28,21 @@
 </template>
 
 <script>
-import {vuseList} from "@/lib-components";
+import {vuseList, vuseSort, vuseSelect} from "@/lib-components";
 import vuseDev from "./vuseDev";
 
 export default {
   setup (props) {
     const dev = vuseDev()
 
-    const list = vuseList({
-      values: dev.planets,
-      itemKey: 'id',
-      itemText: 'name',
-      sortProperty: 'name',
-      selectedKeys: [3]
-    })
+    const {items} = vuseList(dev.planets, 'id', 'name')
+    const {sortedItems} = vuseSort(items, 'name')
+    const {selectionItems} = vuseSelect(items, 2)
 
     return {
-      list
+      items,
+      sortedItems,
+      selectionItems
     }
   }
 }

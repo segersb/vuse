@@ -1,27 +1,35 @@
 import {reactive, watchEffect} from 'vue'
 
-export default function vuseItem (init = {}) {
+export default function vuseItem (value, key, text) {
   const item = reactive({
     value: null,
     key: null,
     text: null,
   })
 
-  item.getProperty = propertyName => {
-    return propertyName.split('.').reduce((i, p) => i ? i[p] : null, item.value);
+  item.getProperty = property => {
+    if (!property) {
+      return null
+    }
+    if (typeof property === 'string') {
+      return property.split('.').reduce((i, p) => i ? i[p] : null, item.value);
+    }
+    if (typeof property === "function") {
+      return property(value)
+    }
   }
 
   watchEffect(() => {
-    item.value = init.value || {}
+    item.value = value || {}
 
-    if (init.key) {
-      item.key = item.value[init.key]
+    if (key) {
+      item.key = item.getProperty(key)
     } else {
       item.key = item.value
     }
 
-    if (init.text) {
-      item.text = item.value[init.text]
+    if (text) {
+      item.text = item.getProperty(text)
     } else {
       item.text = item.value
     }
