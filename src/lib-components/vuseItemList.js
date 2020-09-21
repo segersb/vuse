@@ -4,7 +4,8 @@ export default function vuseItemList (init = {}) {
   const itemList = reactive({
     items: null,
     sortProperty: null,
-    sortAscending: null
+    sortAscending: null,
+    selectedKeys: []
   })
 
   itemList.sort = (sortProperty, sortAscending = false) => {
@@ -45,9 +46,27 @@ export default function vuseItemList (init = {}) {
     }
   }
 
+  itemList.selectItemKey = key => {
+    itemList.items.forEach(item => {
+      item.selected = item.key === key
+    })
+  }
+
+  itemList.selectItemKeys = keys => {
+    itemList.items.forEach(item => {
+      item.selected = keys.some(key => item.key === key)
+    })
+  }
+
   watchEffect(() => {
     itemList.items = init.items || []
     itemList.sort(init.sortProperty, init.sortAscending)
+    if (init.selectedKey) {
+      itemList.selectItemKey(init.selectedKey)
+    }
+    if (init.selectedKeys) {
+      itemList.selectItemKeys(init.selectedKeys)
+    }
     console.debug('initialized item list', itemList)
   })
 

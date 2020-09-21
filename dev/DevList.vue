@@ -3,6 +3,9 @@
     <li
         v-for="item in list.items"
         :key="item.key"
+        :class="{
+          selected: item.selected
+        }"
     >
       {{ item.text }}
     </li>
@@ -23,13 +26,16 @@ export default {
     })
 
     watchEffect(() => {
+      const items = props.values.map(value => vuseItem({
+        value,
+        key: props.itemKey,
+        text: props.itemText
+      }))
+
       devList.list = vuseItemList({
-        items: props.values.map(value => vuseItem({
-          value,
-          key: props.itemKey,
-          text: props.itemText
-        })),
+        items,
         sortProperty: props.sortProperty,
+        selectedKeys: [4]
       })
     })
 
@@ -37,3 +43,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.selected {
+  background-color: coral;
+}
+</style>
