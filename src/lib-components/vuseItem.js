@@ -8,7 +8,7 @@ export default function vuseItem (init = {}) {
   })
 
   item.getProperty = propertyName => {
-    return propertyName.split('.').reduce((i, p) => i ? i[p] : null, item.value)
+    return propertyName.split('.').reduce((i, p) => i ? i[p] : null, item.value);
   }
 
   watchEffect(() => {
@@ -25,8 +25,6 @@ export default function vuseItem (init = {}) {
     } else {
       item.text = item.value
     }
-
-    console.debug('initialized item', item)
   })
 
   return item

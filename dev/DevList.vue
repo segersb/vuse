@@ -13,23 +13,19 @@
 </template>
 
 <script>
-import {vuseItem, vuseItemList} from "@/lib-components";
+import {vuseList} from "@/lib-components";
 import vuseDev from "./vuseDev";
 
 export default {
   setup (props) {
     const dev = vuseDev()
 
-    const items = dev.planets.map(planet => vuseItem({
-      value: planet,
-      key: 'id',
-      text: 'name'
-    }))
-
-    const list = vuseItemList({
-      items,
+    const list = vuseList({
+      values: dev.planets,
+      itemKey: 'id',
+      itemText: 'name',
       sortProperty: 'name',
-      selectedKeys: [4]
+      selectedKeys: [3]
     })
 
     return {

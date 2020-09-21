@@ -19,7 +19,6 @@ export default function vuseButton (init = {}) {
   watchEffect(() => {
     button.text = init.text || ''
     button.disabled = !!init.disabled || button.clickRunning
-    console.debug('initialized button', button)
   })
 
   return button

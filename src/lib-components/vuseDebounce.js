@@ -24,8 +24,6 @@ export default function vuseDebounce (init = {}) {
     debounce.function = init.function
     debounce.wait = init.wait
     debounce.immediate = init.immediate
-
-    console.debug('initialized debounce', debounce)
   })
 
   return debounce
