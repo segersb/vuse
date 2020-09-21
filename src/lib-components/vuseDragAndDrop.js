@@ -1,30 +1,29 @@
 import {reactive} from 'vue'
 import {vuseDebounce} from "@/lib-components";
 
-const dragScrollHandlerDebounce = vuseDebounce({
-  function: (event) => {
-    if (event && event.y && event.y < 50) {
-      window.scrollBy({top: -160, behavior: 'smooth'})
-    } else if (event && event.y && event.y < 50) {
-      window.scrollBy({top: -80, behavior: 'smooth'})
-    } else if (event && event.y && event.y < 100) {
-      window.scrollBy({top: -40, behavior: 'smooth'})
-    } else if (event && event.y && event.y < 150) {
-      window.scrollBy({top: -20, behavior: 'smooth'})
-    }
-    if (event && event.y && event.view.innerHeight - event.y < 50) {
-      window.scrollBy({top: 160, behavior: 'smooth'})
-    } else if (event && event.y && event.view.innerHeight - event.y < 50) {
-      window.scrollBy({top: 80, behavior: 'smooth'})
-    } else if (event && event.y && event.view.innerHeight - event.y < 100) {
-      window.scrollBy({top: 40, behavior: 'smooth'})
-    } else if (event && event.y && event.view.innerHeight - event.y < 150) {
-      window.scrollBy({top: 20, behavior: 'smooth'})
-    }
-  }
-})
-
 const dragScrollHandler = (event) => {
+  if (event && event.y && event.y < 50) {
+    window.scrollBy({top: -160, behavior: 'smooth'})
+  } else if (event && event.y && event.y < 50) {
+    window.scrollBy({top: -80, behavior: 'smooth'})
+  } else if (event && event.y && event.y < 100) {
+    window.scrollBy({top: -40, behavior: 'smooth'})
+  } else if (event && event.y && event.y < 150) {
+    window.scrollBy({top: -20, behavior: 'smooth'})
+  }
+  if (event && event.y && event.view.innerHeight - event.y < 50) {
+    window.scrollBy({top: 160, behavior: 'smooth'})
+  } else if (event && event.y && event.view.innerHeight - event.y < 50) {
+    window.scrollBy({top: 80, behavior: 'smooth'})
+  } else if (event && event.y && event.view.innerHeight - event.y < 100) {
+    window.scrollBy({top: 40, behavior: 'smooth'})
+  } else if (event && event.y && event.view.innerHeight - event.y < 150) {
+    window.scrollBy({top: 20, behavior: 'smooth'})
+  }
+}
+
+const dragScrollHandlerDebounce = vuseDebounce(dragScrollHandler)
+const dragScrollHandlerDebounced = (event) => {
   dragScrollHandlerDebounce.executeFunction(event)
 }
 
@@ -42,7 +41,7 @@ dragAndDrop.startDrag = (dragEvent, dragData, dragDataType) => {
   if (dragAndDrop.dragImage && dragAndDrop.dragImageWidth && dragAndDrop.dragImageHeight) {
     dragEvent.dataTransfer.setDragImage(dragAndDrop.dragImage, dragAndDrop.dragImageWidth, dragAndDrop.dragImageHeight)
   }
-  dragEvent.target.addEventListener('drag', dragScrollHandler)
+  dragEvent.target.addEventListener('drag', dragScrollHandlerDebounced)
 }
 
 dragAndDrop.dragOver = (dragOverEvent, dropDataTypes) => {

@@ -28,22 +28,27 @@
 </template>
 
 <script>
-import {vuseList, vuseSort, vuseSelect} from "@/lib-components";
-import vuseDev from "./vuseDev";
+import {vuseList, vuseSelect, vuseSort} from "@/lib-components";
 
 export default {
-  setup (props) {
-    const dev = vuseDev()
+  inject: ['planets'],
 
-    const {items} = vuseList(dev.planets, 'id', 'name')
+  data () {
+    return {
+      items: null,
+      sortedItems: null,
+      selectionItems: null,
+    }
+  },
+
+  created () {
+    const {items} = vuseList(this.planets, 'id', 'name')
     const {sortedItems} = vuseSort(items, 'name')
     const {selectionItems} = vuseSelect(items, 2)
 
-    return {
-      items,
-      sortedItems,
-      selectionItems
-    }
+    this.items = items
+    this.sortedItems = sortedItems
+    this.selectionItems = selectionItems
   }
 }
 </script>

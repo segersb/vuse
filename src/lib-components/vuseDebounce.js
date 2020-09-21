@@ -1,6 +1,6 @@
 import {reactive, watchEffect} from 'vue'
 
-export default function vuseDebounce (init = {}) {
+export default function vuseDebounce (debounceFunction, wait = 200, immediate = false) {
   const debounce = reactive({
     function: null,
     wait: null,
@@ -21,9 +21,9 @@ export default function vuseDebounce (init = {}) {
   }
 
   watchEffect(() => {
-    debounce.function = init.function
-    debounce.wait = init.wait
-    debounce.immediate = init.immediate
+    debounce.function = debounceFunction
+    debounce.wait = wait
+    debounce.immediate = immediate
   })
 
   return debounce

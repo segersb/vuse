@@ -5,16 +5,18 @@
 
 <script>
 import {vuseClick} from "@/lib-components";
-import vuseDev from "./vuseDev";
 
 export default {
-  setup (props) {
-    const dev = vuseDev()
-    const click = vuseClick(dev.asyncTimeout)
-
+  data() {
     return {
-      click
+      click: null
     }
+  },
+
+  inject: ['asyncTimeout'],
+
+  created () {
+    this.click = vuseClick(this.asyncTimeout)
   }
 }
 </script>
