@@ -1,57 +1,22 @@
 <script>
 import DevButton from './DevButton'
-import DevList from './DevList'
+import DevDagAndDrop from './DevDagAndDrop'
+import DevItemList from './DevItemList'
 
 export default {
   name: 'ServeDev',
   components: {
     DevButton,
-    DevList,
-  },
-
-  data() {
-    return {
-      planets: [
-        {
-          id: 1,
-          name: 'Mercury'
-        },
-        {
-          id: 2,
-          name: 'Venus'
-        },
-        {
-          id: 3,
-          name: 'Earth'
-        }
-      ]
-    }
-  },
-
-  methods: {
-    asyncTimout() {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, 1000)
-      })
-    }
-  },
-
-  created () {
-    setTimeout(() => {
-      this.planets.push({
-        id: 4,
-        name: 'Mars'
-      })
-    }, 1000)
+    DevDagAndDrop,
+    DevItemList,
   }
 };
 </script>
 
 <template>
   <div id="app">
-    <dev-button text="Click Me!" :click-handler="asyncTimout"/>
-    <dev-list :values="planets" item-key="id" item-text="name" sort-property="name"/>
+    <dev-button></dev-button>
+    <dev-dag-and-drop></dev-dag-and-drop>
+    <dev-item-list></dev-item-list>
   </div>
 </template>

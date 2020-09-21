@@ -3,15 +3,15 @@
 </template>
 
 <script>
-import vuseButton from "@/lib-components/vuseButton";
+import {vuseButton} from "@/lib-components";
+import vuseDev from "./vuseDev";
 
 export default {
-  props: ['text', 'clickHandler'],
-
   setup (props) {
+    const dev = vuseDev()
     const button = vuseButton({
-      text: props.text,
-      clickHandler: props.clickHandler
+      text: 'Click me!',
+      clickHandler: dev.asyncTimeout
     })
 
     return {

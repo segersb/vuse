@@ -8,7 +8,7 @@ export default function vuseItemList (init = {}) {
     selectedKeys: []
   })
 
-  itemList.sort = (sortProperty, sortAscending = false) => {
+  itemList.sort = (sortProperty, sortAscending = true) => {
     itemList.sortProperty = sortProperty
     itemList.sortAscending = sortAscending
     if (itemList.items != null && itemList.sortProperty != null) {
