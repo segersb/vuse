@@ -1,5 +1,5 @@
 <template>
-  <h2>Simple list</h2>
+  <h2>Sorted list</h2>
   <ul>
     <li v-for="item in items" :key="item.key">
       {{ item.text }}
@@ -8,21 +8,22 @@
 </template>
 
 <script>
-import {vuseList} from "@/lib-components";
+import {vuseList, vuseSort} from "@/lib-components";
 
 export default {
   inject: ['planets'],
 
   data () {
     return {
-      items: null,
-      sortedItems: null,
+      items: null
     }
   },
 
   created () {
-    const {items} = vuseList(this.planets, 'id', planet => 'The planet ' + planet.name)
-    this.items = items
+    const {items} = vuseList(this.planets, 'id', 'name')
+    const {sortedItems} = vuseSort(items, 'name')
+
+    this.items = sortedItems
   }
 }
 </script>
