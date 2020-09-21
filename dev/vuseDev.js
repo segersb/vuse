@@ -21,7 +21,7 @@ export default function vuseDev (init = {}) {
       return this.planets.find(planet => planet.id === id)
     },
 
-    asyncTimout() {
+    asyncTimeout() {
       return new Promise(resolve => {
         setTimeout(() => {
           resolve()
