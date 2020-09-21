@@ -12,23 +12,10 @@
       {{ item.text }}
     </li>
   </ul>
-
-  <h2>Selection list</h2>
-  <ul>
-    <li
-        v-for="item in selectionItems"
-        :key="item.key"
-        :class="{
-          selected: item.selected
-        }"
-    >
-      {{ item.text }}
-    </li>
-  </ul>
 </template>
 
 <script>
-import {vuseList, vuseSelect, vuseSort} from "@/lib-components";
+import {vuseList, vuseSort} from "@/lib-components";
 
 export default {
   inject: ['planets'],
@@ -37,24 +24,15 @@ export default {
     return {
       items: null,
       sortedItems: null,
-      selectionItems: null,
     }
   },
 
   created () {
     const {items} = vuseList(this.planets, 'id', 'name')
     const {sortedItems} = vuseSort(items, 'name')
-    const {selectionItems} = vuseSelect(items, 2)
 
     this.items = items
     this.sortedItems = sortedItems
-    this.selectionItems = selectionItems
   }
 }
 </script>
-
-<style scoped>
-.selected {
-  background-color: coral;
-}
-</style>
