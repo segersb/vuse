@@ -1,7 +1,13 @@
 <template>
-  <h2>Simple list</h2>
+  <h2>List</h2>
   <ul>
-    <li v-for="item in list.items" :key="item.key">
+    <li
+        v-for="item in list.items"
+        :key="item.key"
+        :class="{ selected: item.selected }"
+        @click="list.toggleSelection(item.key)"
+        style="cursor: pointer"
+    >
       {{ item.objectProperties.name.value }}
     </li>
   </ul>
@@ -24,6 +30,7 @@ export default {
     this.list = vuseList(this.planets, 'id', {
       name: planet => 'The planet ' + planet.name
     })
+    this.list.sort('name')
 
     const vm = this
     setTimeout(() => {
@@ -36,3 +43,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.selected {
+  background-color: coral !important;
+}
+</style>
+
