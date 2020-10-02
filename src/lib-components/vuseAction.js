@@ -1,6 +1,6 @@
 import {reactive} from 'vue'
 
-export default function vuseAction (actionRunner) {
+export default function vuseAction (actionHandler) {
   const action = reactive({
     actionRunning: false
   })
@@ -12,7 +12,7 @@ export default function vuseAction (actionRunner) {
 
     action.actionRunning = true
     try {
-      actionRunner && await actionRunner()
+      actionHandler && await actionHandler()
     } finally {
       action.actionRunning = false
     }
