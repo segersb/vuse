@@ -1,48 +1,47 @@
 <template>
-  <h2>Selection</h2>
-
-  <div
-      v-for="item in items"
-      :key="item.key"
-  >
-    <input
-        :class="{
-          selected: item.selected
-        }"
-        :name="item.key"
-        type="checkbox"
-        v-model="item.selected"
-    />
-    <label :for="item.key" v-text="item.text"/>
-  </div>
-
-  <br/>
-
-  <div
-      v-for="item in items"
-      :key="item.key"
-  >
-    {{ item.text }} is {{ item.selected ? 'selected' : 'not selected' }}
-  </div>
-
+  <h2>Selection list</h2>
+  <ul>
+    <li
+        v-for="item in list.items"
+        :key="item.key"
+        :class="{ selected: item.selected }"
+        @click="list.toggleSelection(item.key)"
+    >
+      {{ `${item.objectProperties.name.value} (${item.objectProperties.type.value})` }}
+    </li>
+  </ul>
 </template>
 
 <script>
 import {vuseList, vuseSelect} from "@/lib-components";
 
 export default {
-  inject: ['planets'],
+  inject: ['createPlanets'],
 
   data () {
     return {
-      items: null
+      planets: this.createPlanets(),
+      list: null
     }
   },
 
   created () {
-    const {items} = vuseList(this.planets, 'id', 'name')
-    const {selectionItems} = vuseSelect(items, 2)
-    this.items = selectionItems
+    this.list = vuseList(this.planets, 'id', {
+      name: 'name',
+      type: 'type',
+    })
+    vuseSelect(this.list)
+
+    this.list.toggleSelection(2)
+
+    const vm = this
+    setTimeout(() => {
+      vm.planets.push({
+        id: Math.random() * 1000,
+        name: 'Jupiter',
+        type: 'Gas'
+      })
+    }, 2000)
   }
 }
 </script>

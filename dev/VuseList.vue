@@ -1,8 +1,8 @@
 <template>
   <h2>Simple list</h2>
   <ul>
-    <li v-for="item in items" :key="item.key">
-      {{ item.text }}
+    <li v-for="item in list.items" :key="item.key">
+      {{ item.objectProperties.name.value }}
     </li>
   </ul>
 </template>
@@ -11,18 +11,28 @@
 import {vuseList} from "@/lib-components";
 
 export default {
-  inject: ['planets'],
+  inject: ['createPlanets'],
 
   data () {
     return {
-      items: null,
-      sortedItems: null,
+      planets: this.createPlanets(),
+      list: null
     }
   },
 
   created () {
-    const {items} = vuseList(this.planets, 'id', planet => 'The planet ' + planet.name)
-    this.items = items
+    this.list = vuseList(this.planets, 'id', {
+      name: planet => 'The planet ' + planet.name
+    })
+
+    const vm = this
+    setTimeout(() => {
+      vm.planets.push({
+        id: Math.random() * 1000,
+        name: 'Jupiter',
+        type: 'Gas'
+      })
+    }, 2000)
   }
 }
 </script>

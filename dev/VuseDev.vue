@@ -42,11 +42,31 @@ export default {
       }
     ],
 
-    findPlanetById(id) {
+    createPlanets () {
+      return [
+        {
+          id: 1,
+          name: 'Mercury',
+          type: 'Rocky'
+        },
+        {
+          id: 2,
+          name: 'Venus',
+          type: 'Rocky'
+        },
+        {
+          id: 3,
+          name: 'Earth',
+          type: 'Rocky'
+        }
+      ]
+    },
+
+    findPlanetById (id) {
       return this.planets.find(planet => planet.id === id)
     },
 
-    asyncTimeout() {
+    asyncTimeout () {
       return new Promise(resolve => {
         setTimeout(() => {
           resolve()

@@ -1,16 +1,24 @@
 import {reactive, watchEffect} from 'vue'
 
-export default function vuseSelect (items, ...selectedKeys) {
+export default function vuseSelect (list) {
   const select = reactive({
-    selectionItems: null
+    selectedKeys: []
   })
 
   watchEffect(() => {
-    select.selectionItems = items.map(item => {
-      return {
-        ...item,
-        selected: selectedKeys.some(selectedKey => item.key === selectedKey)
+    list.toggleSelection = key => {
+      if (!select.selectedKeys.some(selectedKey => selectedKey === key)) {
+        select.selectedKeys.push(key)
+      } else {
+        const keyIndex = select.selectedKeys.findIndex(selectedKey => selectedKey === key)
+        if (keyIndex !== -1) {
+          select.selectedKeys.splice(keyIndex, 1)
+        }
       }
+    }
+
+    list.items.forEach(item => {
+      item.selected = select.selectedKeys.some(selectedKey => selectedKey === item.key)
     })
   })
 
