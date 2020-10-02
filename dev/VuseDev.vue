@@ -2,6 +2,7 @@
 import VuseAction from './VuseAction'
 import VuseDebounce from './VuseDebounce'
 import VuseDragAndDrop from './VuseDragAndDrop'
+import VuseFetch from './VuseFetch'
 import VuseForm from './VuseForm'
 import VuseInput from './VuseInput'
 import VuseList from './VuseList'
@@ -11,6 +12,7 @@ const components = {
   VuseAction,
   VuseDebounce,
   VuseDragAndDrop,
+  VuseFetch,
   VuseForm,
   VuseInput,
   VuseList,
