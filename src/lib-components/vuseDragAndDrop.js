@@ -45,7 +45,7 @@ dragAndDrop.startDrag = (dragEvent, dragData, dragDataType) => {
 }
 
 dragAndDrop.dragOver = (dragOverEvent, dropDataTypes) => {
-  if (!dropDataTypes || dropDataTypes.includes(dragAndDrop.dataType)) {
+  if (!dropDataTypes || dropDataTypes.includes(dragAndDrop.dragDataType)) {
     dragOverEvent.preventDefault()
   }
 }

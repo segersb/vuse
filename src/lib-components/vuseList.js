@@ -11,8 +11,7 @@ export default function vuseList (objects, keyProperty, properties) {
       const key = vuseObjectProperty(object, keyProperty).value
 
       const objectProperties = {}
-      const propertyKeys = Array.isArray(properties) ? properties : Object.keys(properties)
-      propertyKeys.forEach(propertyKey => {
+      Object.keys(properties).forEach(propertyKey => {
         objectProperties[propertyKey] = vuseObjectProperty(object, properties[propertyKey])
       })
 

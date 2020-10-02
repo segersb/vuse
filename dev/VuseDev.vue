@@ -3,18 +3,18 @@ import VuseAction from './VuseAction'
 import VuseDebounce from './VuseDebounce'
 import VuseDragAndDrop from './VuseDragAndDrop'
 import VuseList from './VuseList'
+import VuseListSelect from './VuseListSelect'
+import VuseListSort from './VuseListSort'
 import VuseObjectProperty from './VuseObjectProperty'
-import VuseSelect from './VuseSelect'
-import VuseSort from './VuseSort'
 
 const components = {
   VuseAction,
   VuseDebounce,
   VuseDragAndDrop,
   VuseList,
+  VuseListSelect,
+  VuseListSort,
   VuseObjectProperty,
-  VuseSelect,
-  VuseSort,
 };
 
 export default {

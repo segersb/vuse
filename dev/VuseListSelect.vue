@@ -1,5 +1,5 @@
 <template>
-  <h2>Selection list</h2>
+  <h2>List selection</h2>
   <ul>
     <li
         v-for="item in list.items"
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {vuseList, vuseSelect} from "@/lib-components";
+import {vuseList, vuseListSelect} from "@/lib-components";
 
 export default {
   inject: ['createPlanets'],
@@ -30,7 +30,7 @@ export default {
       name: 'name',
       type: 'type',
     })
-    vuseSelect(this.list)
+    vuseListSelect(this.list)
 
     this.list.toggleSelection(2)
 

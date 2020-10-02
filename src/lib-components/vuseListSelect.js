@@ -1,6 +1,6 @@
 import {reactive, watchEffect} from 'vue'
 
-export default function vuseSelect (list) {
+export default function vuseListSelect (list) {
   const select = reactive({
     selectedKeys: []
   })
