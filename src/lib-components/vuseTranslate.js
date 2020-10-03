@@ -15,7 +15,11 @@ translateConfig.addLanguage = language => {
 }
 
 translateConfig.activateLanguage = language => {
-  translateConfig.activeLanguage = language
+  if (typeof language === 'string') {
+    translateConfig.activeLanguage = translateConfig.availableLanguages.find(availableLanguage => availableLanguage.name === language)
+  } else {
+    translateConfig.activeLanguage = language
+  }
 }
 
 export function vuseTranslateConfig () {
