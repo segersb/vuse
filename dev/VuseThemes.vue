@@ -5,7 +5,7 @@
       <li
           v-for="availableTheme in themes.availableThemes"
           :key="availableTheme.name"
-          @click="themes.activateTheme(availableTheme.name)"
+          @click="themes.activateTheme(availableTheme)"
           class="item"
       >
         {{ availableTheme.name }}

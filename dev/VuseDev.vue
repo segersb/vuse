@@ -9,6 +9,7 @@ import VuseInput from './VuseInput'
 import VuseList from './VuseList'
 import VuseObjectProperty from './VuseObjectProperty'
 import VuseThemes from './VuseThemes'
+import VuseTranslate from './VuseTranslate'
 
 const components = {
   VuseAction,
@@ -21,6 +22,7 @@ const components = {
   VuseList,
   VuseObjectProperty,
   VuseThemes,
+  VuseTranslate,
 };
 
 export default {

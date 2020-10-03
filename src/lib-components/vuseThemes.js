@@ -6,17 +6,16 @@ const themes = reactive({
 })
 
 themes.addTheme = theme => {
-  themes.availableThemes.push(theme)
-  if (!themes.activeTheme) {
-    themes.activeTheme = theme
+  if (!themes.availableThemes.some(availableLanguage => availableLanguage.name === theme.name)) {
+    themes.availableThemes.push(theme)
+    if (!themes.activeTheme) {
+      themes.activeTheme = theme
+    }
   }
 }
 
-themes.activateTheme = name => {
-  const theme = themes.availableThemes.find(theme => theme.name === name);
-  if (theme) {
-    themes.activeTheme = theme
-  }
+themes.activateTheme = theme => {
+  themes.activeTheme = theme
 }
 
 export default function vuseThemes () {
