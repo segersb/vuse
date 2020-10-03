@@ -7,6 +7,7 @@ import VuseForm from './VuseForm'
 import VuseInput from './VuseInput'
 import VuseList from './VuseList'
 import VuseObjectProperty from './VuseObjectProperty'
+import VuseThemes from './VuseThemes'
 
 const components = {
   VuseAction,
@@ -17,6 +18,7 @@ const components = {
   VuseInput,
   VuseList,
   VuseObjectProperty,
+  VuseThemes,
 };
 
 export default {

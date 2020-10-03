@@ -7,3 +7,4 @@ export { default as vuseForm } from './vuseForm';
 export { default as vuseInput } from './vuseInput';
 export { default as vuseList } from './vuseList';
 export { default as vuseObjectProperty } from './vuseObjectProperty';
+export { default as vuseThemes } from './vuseThemes';
