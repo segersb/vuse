@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {vuseInput} from "@/lib-components";
+import {vuseInput, vuseInputConfig} from "@/lib-components";
 
 export default {
   inject: ['createPlanets'],
@@ -23,12 +23,21 @@ export default {
   },
 
   created () {
-    this.nameInput = vuseInput(this.planet, 'name')
-    this.nameInput.label = 'Name'
-    this.nameInput.rules = {
-      required: value => !!value,
-      minLength: value => value.length >= 3
+    const inputConfig = vuseInputConfig()
+    inputConfig.rules = {
+      required: {
+        checkHandler: value => !!value,
+        errorMessage: 'You should really fill in this field'
+      },
+      minLength3: {
+        checkHandler: value => value.length >= 3,
+        errorMessage: 'Should be at least 3 characters lang',
+      }
     }
+
+    this.nameInput = vuseInput(this.planet, 'name', 'Name', true)
+    this.nameInput.rules = ['required', 'minLength3']
+    this.nameInput.autoValidate = true
   }
 }
 </script>
