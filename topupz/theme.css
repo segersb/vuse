@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=block');
+/*@import url('//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css');*/
+
+:root {
+    --color-primary: #FFC045;
+    --color-primary-transparent-1: rgba(255, 192, 69, 0.8);
+    --color-primary-transparent-2: rgba(255, 192, 69, 0.6);
+    --color-primary-transparent-3: rgba(255, 192, 69, 0.4);
+    --color-primary-transparent-4: rgba(255, 192, 69, 0.2);
+    --color-primary-transparent-5: rgba(255, 192, 69, 0.1);
+    --color-primary-lighten-1: #ffc657;
+    --color-primary-lighten-2: #ffcc6a;
+    --color-primary-lighten-3: #ffd27c;
+    --color-primary-lighten-4: #ffd98f;
+    --color-primary-lighten-5: #ffdfa2;
+    --color-primary-lighten-6: #fee5b4;
+    --color-primary-lighten-7: #ffecc7;
+    --color-primary-lighten-8: #fff2d9;
+    --color-primary-lighten-9: #fff8ec;
+    --color-primary-darken-1: #ffb524;
+    --color-primary-darken-2: #ffaa04;
+    --color-primary-darken-3: #e29500;
+    --color-primary-darken-4: #c28000;
+    --color-primary-darken-5: #a26b00;
+    --color-primary-darken-6: #815500;
+    --color-primary-darken-7: #614000;
+    --color-primary-darken-8: #402a00;
+    --color-primary-darken-9: #201500;
+    --color-warning: #FB8C00;
+    --color-error: #FF5252;
+    --color-grey: #9E9E9E;
+    --color-grey-lighten-5: #FAFAFA;
+    --color-grey-lighten-4: #F5F5F5;
+    --color-grey-lighten-3: #EEEEEE;
+    --color-grey-lighten-2: #E0E0E0;
+    --color-grey-lighten-1: #BDBDBD;
+    --color-grey-darken-1: #757575;
+    --color-grey-darken-2: #616161;
+    --color-grey-darken-3: #424242;
+    --color-grey-darken-4: #212121;
+    --color-grey-darken-5: #121212;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Ubuntu, sans-serif;
+    background-color: #121212;
+    color: var(--color-grey-lighten-5);
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#app {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 4px #424242 !important;
+    background-color: #424242 !important;
+}
+::-webkit-scrollbar {
+    width: 4px !important;
+    background-color: #424242 !important;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #9E9E9E !important;
+}
+
+.material-icons {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clickable {
+    cursor: pointer;
+    user-select: none;
+}

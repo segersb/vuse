@@ -7,6 +7,7 @@ export { default as vuseFetch, vuseFetchConfig } from './vuseFetch';
 export { default as vuseForm } from './vuseForm';
 export { default as vuseInput, vuseInputConfig } from './vuseInput';
 export { default as vuseList } from './vuseList';
+export { default as vuseMenu } from './vuseMenu';
 export { default as vuseObjectProperty } from './vuseObjectProperty';
 export { default as vuseThemes } from './vuseThemes';
 export { default as vuseTranslate, vuseTranslateConfig } from './vuseTranslate';
